@@ -1,0 +1,178 @@
+/* General Layout */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #b2fefa, #0ed2f7);
+}
+
+/* Container Centering */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card Style */
+.login-card {
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Title */
+.login-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #00b894;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-wrapper .icon {
+  position: absolute;
+  left: 10px;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+/* Password Toggle */
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+/* Error Message */
+.error-message {
+  color: #d63031;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.login-btn {
+  background-color: #00cec9;
+  color: white;
+}
+.login-btn:hover {
+  background-color: #01a3a4;
+}
+
+.register-btn {
+  background-color: transparent;
+  color: #00cec9;
+  border: 2px solid #00cec9;
+}
+.register-btn:hover {
+  background-color: #e0ffff;
+}
+
+/* Divider Text */
+.social-divider {
+  text-align: center;
+  margin: 20px 0 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Social Buttons */
+.social-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.social-btn {
+  flex: 1;
+  min-width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.social-icon {
+  font-size: 1.1rem;
+}
+
+.google {
+  background-color: #db4437;
+  color: white;
+}
+.google:hover {
+  background-color: #c33c2e;
+}
+
+.facebook {
+  background-color: #4267B2;
+  color: white;
+}
+.facebook:hover {
+  background-color: #375a9e;
+}
+
+.github {
+  background-color: #333;
+  color: white;
+}
+.github:hover {
+  background-color: #242424;
+}

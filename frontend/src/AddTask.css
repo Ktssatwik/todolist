@@ -1,0 +1,111 @@
+.add-task-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.add-task-form {
+  background-color: #1e293b;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  animation: slideDown 0.3s ease;
+  color: white;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.add-task-form input,
+.add-task-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #334155;
+  color: white;
+  font-size: 1rem;
+  resize: none;
+}
+
+.form-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.add-btn {
+  background-color: #22c55e;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  flex: 1;
+}
+.add-btn:hover {
+  background-color: #16a34a;
+}
+
+.cancel-btn {
+  background-color: #ef4444;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  flex: 1;
+}
+.cancel-btn:hover {
+  background-color: #dc2626;
+}
+
+.error-message {
+  color: #facc15;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+
+.deadline-label {
+  margin-top: 10px;
+  display: block;
+  font-weight: bold;
+}
+
+.required {
+  color: #f87171;
+}
+
+input[type="datetime-local"] {
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  width: 100%;
+  background-color: #334155;
+  color: white;
+}

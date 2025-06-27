@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaUser, FaLock, FaEye, FaEyeSlash, FaGoogle, FaFacebookF, FaGithub } from "react-icons/fa";
-import "./Login.css";
+import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaGoogle, FaFacebookF, FaGithub } from "react-icons/fa";
+import "./Register.css";
 
-function Login() {
+function Register() {
   const [errorMessage, setErrorMessage] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+  const handleRegister = () => {
+    const n = document.getElementById("username").value.trim();
+    const p = document.getElementById("password").value.trim();
+    const e = document.getElementById("email").value.trim();
 
-    if (username && password) {
-      navigate("/toDoList");
+    if (n && p && e) {
+      navigate("/login");
     } else {
-      setErrorMessage("⚠️ Please fill in both username and password.");
+      setErrorMessage("⚠️ Please fill all the fields before registering.");
     }
   };
 
-  const goToRegister = () => {
-    navigate("/register");
+  const goToLogin = () => {
+    navigate("/login");
   };
 
   const togglePassword = () => {
@@ -28,15 +29,23 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <h1 className="login-title">Login</h1>
+    <div className="register-container">
+      <div className="register-card">
+        <h1 className="register-title">Create Account</h1>
 
         <div className="input-group">
           <label htmlFor="username">Username</label>
           <div className="input-wrapper">
             <FaUser className="icon" />
-            <input type="text" name="username" id="username" placeholder="Enter your username" />
+            <input type="text" name="username" id="username" placeholder="Choose a username" />
+          </div>
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="email">Email</label>
+          <div className="input-wrapper">
+            <FaEnvelope className="icon" />
+            <input type="email" name="email" id="email" placeholder="Enter your email" />
           </div>
         </div>
 
@@ -48,7 +57,7 @@ function Login() {
               type={passwordVisible ? "text" : "password"}
               name="password"
               id="password"
-              placeholder="Enter your password"
+              placeholder="Create a password"
             />
             <span onClick={togglePassword} className="toggle-password">
               {passwordVisible ? <FaEyeSlash /> : <FaEye />}
@@ -58,10 +67,10 @@ function Login() {
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-        <button onClick={handleLogin} className="btn login-btn">Login</button>
-        <button onClick={goToRegister} className="btn register-btn">Create Account</button>
+        <button onClick={handleRegister} className="btn register-btn">Register</button>
+        <button onClick={goToLogin} className="btn login-btn">Already have an account?</button>
 
-        <div className="social-divider">or login with</div>
+        <div className="social-divider">or sign up with</div>
 
         <div className="social-buttons">
           <button className="social-btn google"><FaGoogle className="social-icon" /> Google</button>
@@ -73,4 +82,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
