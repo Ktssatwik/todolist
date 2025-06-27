@@ -17,7 +17,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 40px 20px 80px; /* slightly more space at bottom */
+  padding: 40px 20px 80px; 
   min-height: calc(100vh - 60px);
   overflow-y: auto;
 }

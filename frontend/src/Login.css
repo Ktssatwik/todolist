@@ -1,4 +1,3 @@
-/* General Layout */
 body, html {
   height: 100%;
   margin: 0;
@@ -6,7 +5,6 @@ body, html {
   background: linear-gradient(to right, #b2fefa, #0ed2f7);
 }
 
-/* Container Centering */
 .login-container {
   height: 100vh;
   display: flex;
@@ -14,7 +12,6 @@ body, html {
   align-items: center;
 }
 
-/* Card Style */
 .login-card {
   background-color: white;
   padding: 40px 30px;
@@ -24,7 +21,6 @@ body, html {
   width: 100%;
 }
 
-/* Title */
 .login-title {
   text-align: center;
   font-size: 2.5rem;
@@ -33,7 +29,6 @@ body, html {
   text-transform: uppercase;
 }
 
-/* Input Groups */
 .input-group {
   margin-bottom: 20px;
 }
@@ -69,7 +64,6 @@ body, html {
   outline: none;
 }
 
-/* Password Toggle */
 .toggle-password {
   position: absolute;
   right: 10px;
@@ -78,7 +72,6 @@ body, html {
   font-size: 1.1rem;
 }
 
-/* Error Message */
 .error-message {
   color: #d63031;
   margin-bottom: 10px;
@@ -86,7 +79,6 @@ body, html {
   text-align: center;
 }
 
-/* Buttons */
 .btn {
   width: 100%;
   padding: 12px;
@@ -103,6 +95,7 @@ body, html {
   background-color: #00cec9;
   color: white;
 }
+
 .login-btn:hover {
   background-color: #01a3a4;
 }
@@ -112,11 +105,11 @@ body, html {
   color: #00cec9;
   border: 2px solid #00cec9;
 }
+
 .register-btn:hover {
   background-color: #e0ffff;
 }
 
-/* Divider Text */
 .social-divider {
   text-align: center;
   margin: 20px 0 10px;
@@ -124,7 +117,6 @@ body, html {
   color: #555;
 }
 
-/* Social Buttons */
 .social-buttons {
   display: flex;
   gap: 10px;
@@ -157,6 +149,7 @@ body, html {
   background-color: #db4437;
   color: white;
 }
+
 .google:hover {
   background-color: #c33c2e;
 }
@@ -165,6 +158,7 @@ body, html {
   background-color: #4267B2;
   color: white;
 }
+
 .facebook:hover {
   background-color: #375a9e;
 }
@@ -173,6 +167,7 @@ body, html {
   background-color: #333;
   color: white;
 }
+
 .github:hover {
   background-color: #242424;
 }

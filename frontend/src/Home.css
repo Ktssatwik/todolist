@@ -1,4 +1,4 @@
-/* Reset & Base */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,14 +12,12 @@ body, html {
   background: linear-gradient(to right, #b2f7ef, #e0f7fa);
 }
 
-/* Container layout */
 .home-container {
   display: flex;
   height: 100vh;
   width: 100%;
 }
 
-/* Left Section */
 .home-left {
   flex: 1;
   display: flex;
@@ -37,7 +35,6 @@ body, html {
   animation: slideLeft 1s ease-out;
 }
 
-/* Right Section */
 .home-right {
   flex: 1;
   display: flex;
@@ -76,7 +73,6 @@ body, html {
   font-style: italic;
 }
 
-/* Buttons */
 .button-group {
   display: flex;
   flex-direction: column;
@@ -110,7 +106,7 @@ body, html {
   transform: translateY(-2px);
 }
 
-/* Animations */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -133,7 +129,6 @@ body, html {
   }
 }
 
-/* Responsive */
 @media (max-width: 850px) {
   .home-container {
     flex-direction: column;
