@@ -1,46 +1,181 @@
+/* Keep existing navbar styles */
 .navbar {
-  background-color: #111827;
-  color: #ffffff;
-  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  padding: 12px 24px;
+  background-color: #282c34;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar-brand {
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 1.6em;
+  font-weight: 600;
 }
 
-.navbar-links {
-  display: flex;
-  gap: 1rem;
+/* Settings icon container */
+.settings {
+  position: relative;
+  cursor: pointer;
 }
 
-.nav-button {
-  background: none;
-  color: white;
-  border: 2px solid #4ade80;
-  padding: 8px 16px;
+/* The gear icon itself */
+.settings-icon {
+  font-size: 2.5em;
+  transition: transform 0.2s;
+}
+
+/* Rotate on hover for nice effect */
+.settings:hover .settings-icon {
+  transform: rotate(40deg);
+}
+
+/* Dropdown container */
+.dropdown-menu {
+  position: absolute;
+  top: 120%;       /* slightly below the icon */
+  right: 0;
+  background-color: #fff;
+  color: black;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  overflow: hidden;
+  padding: 4px 0;  /* so items are closer to edge */
+  width: 400px; /* Adjust width as needed */
 }
 
-.nav-button:hover {
-  background-color: #4ade80;
-  color: #111827;
+/* Each item inside dropdown */
+.insideToggle {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 1.5em;
 }
 
-.logout {
-  border-color: #ef4444;
-}
-
-.logout:hover {
-  background-color: #ef4444;
+/* Hover effect */
+.insideToggle:hover {
+  background-color: #4caf50;   /* or any accent color you like */
   color: white;
+}
+
+
+.change-password{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0.5rem;
+  padding: 0.5rem ;
+  border: 0.1rem solid white;
+  border-radius: 1rem;
+  background: rgb(89, 98, 90);
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;                   
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.change-password-inputs
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0.2rem;
+  padding: 0.2rem;
+}
+
+.change-password-labels
+{
+  margin: 0.2rem;
+  padding: 0.2rem;
+  color: rgb(243, 244, 248);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.4rem
+}
+
+.change-password-boxes
+{
+  margin: 0.2rem;
+  padding: 0.2rem;
+  color: rgb(16, 3, 3);
+  background-color: rgb(208, 219, 219);
+  width: 300px;
+  height: 50px;
+  border: 3px solid rgb(243, 244, 248);
+  border-radius: 10px;
+}
+
+.change-password-boxes::placeholder
+{
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight :400;
+  text-align: center;
+}
+
+.modal-overlay {
+  position: fixed;              /* stay fixed on screen */
+  top: 0;
+  left: 0;
+  width: 100vw;                 /* full width */
+  height: 100vh;                /* full height */
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  display: flex;                /* use flexbox to center */
+  justify-content: center;      /* center horizontally */
+  align-items: center;          /* center vertically */
+  z-index: 1000;                /* make sure it's on top */
+}    
+
+.change-password-heading {
+  color: white;
+  font-size: 2.3em;
+  margin-bottom: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  font-weight: bold ;
+  text-transform: capitalize;
+}
+
+.change-password-button {
+  background-color: #4caf50; /* Green */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.change-password-cancel-button {
+  background-color: #f44336; /* Red */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.change-password-both-buttons
+{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+  flex-direction: row;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+
 }

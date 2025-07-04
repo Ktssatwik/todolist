@@ -12,11 +12,13 @@ function Login() {
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    if (username && password) {
-      navigate("/toDoList");
-    } else {
+    if (!username || !password) {
       setErrorMessage("⚠️ Please fill in both username and password.");
+      return;
     }
+
+    // ✅ Frontend only: directly navigate to innerHome
+    navigate("/innerHome");
   };
 
   const goToRegister = () => {
@@ -51,7 +53,7 @@ function Login() {
               placeholder="Enter your password"
             />
             <span onClick={togglePassword} className="toggle-password">
-              {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+              {passwordVisible ? <FaEyeSl ash /> : <FaEye />}
             </span>
           </div>
         </div>
@@ -74,3 +76,18 @@ function Login() {
 }
 
 export default Login;
+
+
+// <div className="x">
+//   <>FaGoogle</>
+//   <p>google</p>
+// </div>
+
+// // in css 
+
+// .x{
+//   display : flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: center;
+// }

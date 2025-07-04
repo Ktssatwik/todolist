@@ -1,0 +1,88 @@
+.calc-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;   
+  padding-top: 30px;
+}   
+
+
+.calc {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  width: 380px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.calc-display {
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  padding: 15px;
+  font-size: 1.8rem;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  text-align: right;
+  overflow-x: auto;
+}
+
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn-num, .btn-op, .btn-func, .btn-clear, .btn-del, .btn-equal, .btn-zero {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  padding: 14px;
+  cursor : pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.btn-op { background: #e67e22; }
+.btn-func { background: #2980b9; }
+.btn-clear { background: #c0392b; }
+.btn-del { background: #8e44ad; }
+.btn-equal { background: #27ae60; grid-row: span 2; }
+.btn-zero { grid-column: span 2; }
+
+.btn-num:hover, .btn-op:hover, .btn-func:hover, .btn-clear:hover, .btn-del:hover, .btn-equal:hover, .btn-zero:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.btn-num:active, .btn-op:active, .btn-func:active, .btn-clear:active, .btn-del:active, .btn-equal:active, .btn-zero:active {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+
+.calc-container .bg-left,
+.calc-container .bg-right {
+  position: absolute;
+  top: 50%;
+  font-size: 8rem;     /* very large */
+  color: rgba(255,255,255,0.07);  /* subtle white */
+  font-weight: 900;
+  user-select: none;
+  pointer-events: none;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  margin: 20px;
+}
+
+.calc-container .bg-left {
+  left: 0;
+  transform: translate(-20%, -50%);
+}
+
+.calc-container .bg-right {
+  right: 0;
+  transform: translate(20%, -50%);
+}

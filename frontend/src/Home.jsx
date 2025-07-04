@@ -23,8 +23,8 @@ const Home = () => {
 
       <div className="home-right">
         <div className="content-card">
-          <h1 className="heading">Welcome to <span className="brand">To-Do List</span></h1>
-          <p className="quote">"Your tasks, your future — in one place."</p>
+          <h1 className="heading">Welcome to <span className="brand">TaskHub+</span></h1>
+          <p className="quote">"Balance your tasks, sharpen your mind, and enjoy the journey."</p>
 
           <div className="button-group">
             <button className="btn login-btn" onClick={goToLogin}>Login</button>
