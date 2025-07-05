@@ -12,6 +12,7 @@ import ChessGame from "./ChessGame";
 import Dictionary from "./Dictionary";
 import Translator from "./Translator";
 import ScanCode from "./ScanCode";
+import Welcome from "./Welcome";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/dictionary" element={<Dictionary/>}/>
           <Route path="/translator" element={<Translator/>}/>
           <Route path="/scanCode" element={<ScanCode />} />
+          <Route path="/welcome" element={<Welcome />} />
         </Route>
       </Routes>
     </Router>

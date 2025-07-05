@@ -95,13 +95,13 @@ function Header() {
                     setLogout(false);
                     setShowDropdown(false);
                     navigate("/login");
-                  }}
-                >
-                  YES
-                </button>
-                <button
-                  className="logout-cancel-button"
-                  onClick={() => {
+                    }}
+                  >
+                    YES
+                  </button>
+                  <button
+                    className="logout-cancel-button"
+                    onClick={() => {
                     setLogout(false);
                     setShowDropdown(false);
                   }}

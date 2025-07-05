@@ -35,8 +35,12 @@ const InnerHome = () => {
           <p>Hola Hello Bonjour హలో नमस्ते</p>
         </div>
         <div className="card" onClick={() => navigate("/scanCode")}>
-          <h3>📖 QR CODE </h3>
+          <h3>⛶ QR CODE </h3>
           <p>Scan The Qr Code Please</p>
+        </div>
+        <div className="card" onClick={() => navigate("/Welcome")}>
+          <h3>Welcome</h3>
+          <p>welcome to the Website !!!</p>
         </div>
       </div>
     </div>
