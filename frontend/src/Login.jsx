@@ -20,7 +20,7 @@ function Login() {
     // ✅ Frontend only: directly navigate to innerHome
     if( username === "ktssatwik" && password === "bablu1103") {
       setErrorMessage("");
-      navigate("/innerHome");
+      navigate("/welcome");
     }
     else {
       setErrorMessage("❌ Invalid username or password. Please try again.");

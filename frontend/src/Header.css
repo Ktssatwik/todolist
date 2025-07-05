@@ -1,253 +1,164 @@
-/* Keep existing navbar styles */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 24px;
-  background-color: #282c34;
+  background-color: #1f2233;
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
 
 .navbar-brand {
-  font-size: 1.6em;
-  font-weight: 600;
+  font-size: 1.8em;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
-/* Settings icon container */
 .settings {
   position: relative;
   cursor: pointer;
 }
 
-/* The gear icon itself */
 .settings-icon {
-  font-size: 2.5em;
-  transition: transform 0.2s;
+  font-size: 2.2em;
+  color: #ff9040;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Rotate on hover for nice effect */
 .settings:hover .settings-icon {
   transform: rotate(40deg);
+  color: #f5d300;
 }
 
-/* Dropdown container */
 .dropdown-menu {
   position: absolute;
-  top: 120%;       /* slightly below the icon */
+  top: 120%;
   right: 0;
-  background-color: #fff;
-  color: black;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background: rgba(20, 20, 30, 0.95);
+  color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  width: 180px;
+  width: 250px;
   overflow: hidden;
-  padding: 4px 0;  /* so items are closer to edge */
-  width: 400px; /* Adjust width as needed */
 }
 
-/* Each item inside dropdown */
 .insideToggle {
-  padding: 10px 16px;
+  padding: 14px 18px;
   cursor: pointer;
+  font-size: 1.3em;
   transition: background-color 0.2s, color 0.2s;
-  font-size: 1.5em;
 }
 
-/* Hover effect */
 .insideToggle:hover {
-  background-color: #4caf50;   /* or any accent color you like */
+  background: #ff9040;
   color: white;
-}
-
-
-.change-password{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 0.5rem;
-  padding: 0.5rem ;
-  border: 0.1rem solid white;
-  border-radius: 1rem;
-  background: rgb(89, 98, 90);
-  padding: 20px 30px;
-  border-radius: 10px;
-  max-width: 400px;
-  width: 90%;                   
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.change-password-inputs
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 0.2rem;
-  padding: 0.2rem;
-}
-
-.change-password-labels
-{
-  margin: 0.2rem;
-  padding: 0.2rem;
-  color: rgb(243, 244, 248);
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.4rem
-}
-
-.change-password-boxes
-{
-  margin: 0.2rem;
-  padding: 0.2rem;
-  color: rgb(16, 3, 3);
-  background-color: rgb(208, 219, 219);
-  width: 300px;
-  height: 50px;
-  border: 3px solid rgb(243, 244, 248);
-  border-radius: 10px;
-}
-
-.change-password-boxes::placeholder
-{
-  color: rgb(0, 0, 0);
-  font-size: 1rem;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight :400;
-  text-align: center;
 }
 
 .modal-overlay {
-  position: fixed;              /* stay fixed on screen */
-  top: 0;
-  left: 0;
-  width: 100vw;                 /* full width */
-  height: 100vh;                /* full height */
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
-  display: flex;                /* use flexbox to center */
-  justify-content: center;      /* center horizontally */
-  align-items: center;          /* center vertically */
-  z-index: 1000;                /* make sure it's on top */
-}    
-
-.change-password-heading {
-  color: white;
-  font-size: 2.3em;
-  margin-bottom: 1rem;
-  font-family: 'Courier New', Courier, monospace;
-  text-align: center;
-  font-weight: bold ;
-  text-transform: capitalize;
-}
-
-.change-password-button {
-  background-color: #4caf50; /* Green */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.2em;
-}
-
-.change-password-cancel-button {
-  background-color: #f44336; /* Red */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.2em;
-}
-
-.change-password-both-buttons
-{
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 1rem;
-  flex-direction: row;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.logout-modal{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
+}
+
+.change-password, .logout-modal {
+  background: rgba(30, 30, 40, 0.95);
+  border: 2px solid #ff9040;
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  color: #f0f0f0;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  display: flex;
   flex-direction: column;
-  border: 0.1rem solid white;
-  border-radius: 1rem;
-  background: rgb(11, 135, 244);
-  margin: 1rem;
-  padding: 1rem;
-  width: 400px;
-  height: 200px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3)
+  align-items: center;
 }
 
-.logout-heading{
-  color: rgb(16, 3, 3);
-  font-size: 2.3em;
+.change-password-heading, .logout-heading {
+  font-size: 2rem;
   margin-bottom: 1rem;
-  font-family: 'Courier New', Courier, monospace;
-  text-align: center;
-  font-weight: bold ;
-  text-transform: capitalize;
+  color: #ff9040;
+  font-weight: bold;
 }
 
-.logout-message{
-  color: rgb(16, 3, 3);
-  font-size: 1.5em;
+.change-password-form, .logout-message {
+  width: 100%;
+  text-align: center;
+  font-size: 1.1rem;
   margin-bottom: 1rem;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  text-align: center;
-  font-weight: 400;
-  text-transform: capitalize;
 }
 
-.logout-buttons {
+.change-password-inputs {
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.change-password-labels {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+  color: #ddd;
+  text-align: left;
+}
+
+.change-password-boxes {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background: #2d2f3a;
+  color: #f0f0f0;
+  font-size: 1rem;
+}
+
+.change-password-boxes::placeholder {
+  color: #aaa;
+  text-align: center;
+}
+
+.change-password-both-buttons, .logout-buttons {
   display: flex;
   justify-content: center;
+  gap: 1rem;
   width: 100%;
-  margin-top: 1rem;
-  flex-direction: row;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
 }
 
-.logout-confirm-button {
-  background-color: #4caf50; 
-  color: white;
+.change-password-button, .change-password-cancel-button,
+.logout-confirm-button, .logout-cancel-button {
   padding: 10px 20px;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 1.2em;
+  transition: transform 0.2s, opacity 0.2s;
 }
 
-.logout-cancel-button{
-  background-color: #f44336;
+.change-password-button, .logout-confirm-button {
+  background: #4caf50;
   color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.2em;
 }
-.logout-buttons button:hover {
+
+.change-password-cancel-button, .logout-cancel-button {
+  background: #f44336;
+  color: white;
+}
+
+.change-password-button:hover, .change-password-cancel-button:hover,
+.logout-confirm-button:hover, .logout-cancel-button:hover {
+  transform: scale(1.05);
   opacity: 0.9;
-  font-size: 1.3em;
-  transition: all 0.3s ease-in-out;
+}
+
+.logout-message {
+  font-size: 1.2rem;
+  color: #ccc;
 }

@@ -1,10 +1,22 @@
 import React from "react";
-import { FaListUl, FaCalculator, FaStopwatch, FaChess, FaBook, FaLanguage, FaQrcode, FaShoppingCart, FaUserShield } from "react-icons/fa";
+import { FaListUl, FaCalculator, FaStopwatch, FaChess, FaBook, FaLanguage, FaQrcode } from "react-icons/fa";
 import "./Welcome.css";
 import { useNavigate } from "react-router-dom";
 
 const Welcome = () => {
   const navigate = useNavigate();
+  const [askAdminPassword, setAskAdminPassword] = React.useState(false);
+  const [adminPasswordInput, setAdminPasswordInput] = React.useState("");
+
+  const handleAdminSubmit = () => {
+    if (adminPasswordInput === "bablu1103") {
+      navigate("/admin");
+      setAskAdminPassword(false);
+      setAdminPasswordInput("");
+    } else {
+      alert("Incorrect password! Access denied.");
+    }
+  };
 
   return (
     <div className="welcome-container">
@@ -25,33 +37,48 @@ const Welcome = () => {
           <p onClick={() => navigate("/dictionary")}><span className="nav-icon"><FaBook /></span> dictionary</p>
         </div>
         <div className="welcome-nav-items">
-          <p onClick={() => alert("UNDER MAINTENANCE")}><span className="nav-icon"><FaLanguage /></span> translator</p>
+          <p onClick={() => alert("UNDER MAINTANCE")}><span className="nav-icon"><FaLanguage /></span> translator</p>
         </div>
         <div className="welcome-nav-items">
           <p onClick={() => navigate("/scancode")}><span className="nav-icon"><FaQrcode /></span> scan code</p>
         </div>
       </nav>
-
       <main className="welcome-main">
-        <h1 className="main-heading">Welcome to Your Productivity Hub</h1>
-        <p className="main-subheading">Daily tools and an eCommerce experience – all in one place</p>
-        <div className="cards-grid">
-          <div className="feature-card">
-            <FaShoppingCart className="card-icon" />
-            <h3>Shop & Order</h3>
-            <p>Browse items and place your orders easily. Enjoy a smooth shopping experience!</p>
+        <div className="abstract-shape"></div>
+        <h1 className="main-heading">Welcome to DailyBox</h1>
+        <p className="main-tagline">Your daily apps & tools — beautifully packed in one place.</p>
+        <p className="main-slogan">✨ Simplify, Organize, Achieve ✨</p>
+        <div className="card-container">
+          <div className="welcome-card" onClick={() => setAskAdminPassword(true)}>
+            <h2>Admin</h2>
+            <p>Manage products, track orders, and keep the store updated effortlessly.</p>
           </div>
-          <div className="feature-card">
-            <FaUserShield className="card-icon" />
-            <h3>Admin Control</h3>
-            <p>Admins can add, update, or remove items to keep your store fresh and up to date.</p>
-          </div>
-          <div className="feature-card">
-            <FaListUl className="card-icon" />
-            <h3>Daily Tools</h3>
-            <p>Stay productive with your todo list, calculator, stopwatch, and more at your fingertips.</p>
+          <div className="welcome-card" onClick={() => navigate("/user")}>
+            <h2>User</h2>
+            <p>Browse, add to cart, and place orders quickly and securely.</p>
           </div>
         </div>
+
+        {askAdminPassword && (
+          <div className="modal-overlay">
+            <div className="admin-password-modal">
+              <h3>Enter Admin Password</h3>
+              <input
+                type="password"
+                placeholder="Password"
+                value={adminPasswordInput}
+                onChange={(e) => setAdminPasswordInput(e.target.value)}
+              />
+              <div className="admin-modal-buttons">
+                <button onClick={handleAdminSubmit}>Submit</button>
+                <button onClick={() => {
+                  setAskAdminPassword(false);
+                  setAdminPasswordInput("");
+                }}>Cancel</button>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
