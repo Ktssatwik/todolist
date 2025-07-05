@@ -73,7 +73,11 @@ body, html {
 }
 
 .error-message {
-  color: #d63031;
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
   margin-bottom: 10px;
   font-weight: bold;
   text-align: center;

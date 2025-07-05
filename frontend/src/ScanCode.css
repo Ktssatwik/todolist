@@ -1,0 +1,48 @@
+.scan-code-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  height: 100vh;
+}
+
+.scan-code-heading {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.qr-input {
+  width: 300px;
+  height: 50px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.qr-input::placeholder {
+  color: #aaa;
+    font-style: italic;
+    font-size: large;
+    text-align: center;
+}   
+
+.qr-code-display {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+  border: 30px solid #06f129;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeInScale 0.5s ease forwards;
+}
+
+@keyframes fadeInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

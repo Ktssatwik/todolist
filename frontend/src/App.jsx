@@ -15,7 +15,7 @@ import ScanCode from "./ScanCode";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/p4">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

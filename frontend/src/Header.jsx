@@ -7,6 +7,7 @@ function Header() {
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
   const [changePassword, setChangePassword] = useState(false);
+  const [logout, setLogout] = useState(false);
 
   const dropDownRef = useRef(null);
 
@@ -14,7 +15,7 @@ function Header() {
     const handleClickOutside = (event) => {
       if (dropDownRef.current && !dropDownRef.current.contains(event.target)) {
         setShowDropdown(false);
-        console.log("cd");
+        // console.log("cd");
       }
       // setShowDropdown(false);
     };
@@ -38,7 +39,13 @@ function Header() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-brand">🌱 TaskHub+</div>
+      <div
+        className="navbar-brand"
+        onClick={() => navigate("/innerHome")}
+        style={{ cursor: "pointer" }}
+      >
+        🌱 TaskHub+
+      </div>
       <div
         className="settings"
         onClick={handleToggleDropdown}
@@ -50,7 +57,7 @@ function Header() {
             <div
               className="insideToggle"
               onClick={() => {
-                alert("Please dial { (!&&%&*$$) } for anything.");
+                alert("Please dial 9177578440 for anything.");
               }}
             >
               Contact
@@ -67,14 +74,44 @@ function Header() {
             <div
               className="insideToggle"
               onClick={() => {
-                navigate("/"); // 🟢 use navigate instead of Navigate
+                setLogout(true);
+                setShowDropdown(false);
               }}
             >
               Logout
             </div>
           </div>
         )}
-
+        {logout && (
+          <div className="modal-overlay">
+            <div className="logout-modal">
+              <h2 className="logout-heading">LOGOUT</h2>
+              <p className="logout-message">Are you sure you want to logout?</p>
+              <div className="logout-buttons">
+                <button
+                  className="logout-confirm-button"
+                  onClick={() => {
+                    // alert("You have been logged out successfully!");
+                    setLogout(false);
+                    setShowDropdown(false);
+                    navigate("/login");
+                  }}
+                >
+                  YES
+                </button>
+                <button
+                  className="logout-cancel-button"
+                  onClick={() => {
+                    setLogout(false);
+                    setShowDropdown(false);
+                  }}
+                >
+                  NO
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
         {changePassword && (
           <div className="modal-overlay">
             <div className="change-password">

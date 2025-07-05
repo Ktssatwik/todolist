@@ -18,7 +18,13 @@ function Login() {
     }
 
     // ✅ Frontend only: directly navigate to innerHome
-    navigate("/innerHome");
+    if( username === "ktssatwik" && password === "bablu1103") {
+      setErrorMessage("");
+      navigate("/innerHome");
+    }
+    else {
+      setErrorMessage("❌ Invalid username or password. Please try again.");
+    } 
   };
 
   const goToRegister = () => {
@@ -53,7 +59,7 @@ function Login() {
               placeholder="Enter your password"
             />
             <span onClick={togglePassword} className="toggle-password">
-              {passwordVisible ? <FaEyeSl ash /> : <FaEye />}
+              {passwordVisible ? <FaEyeSlash ash /> : <FaEye />}
             </span>
           </div>
         </div>
