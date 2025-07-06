@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Auth pages
@@ -6,12 +6,14 @@ import Login from "./Login";
 import Register from "./Register";
 
 // Main pages
-import Home from "./Home";              // ✅ You forgot to import this
+import Home from "./Home";
 import InnerHome from "./InnerHome";
 import Layout from "./Layout";
 import Welcome from "./Welcome";
 import User from "./User";
 import Admin from "./Admin";
+import Staff from "./Staff";
+import Vendor from "./Vendor";
 
 // Tools / features
 import ToDoList from "./ToDoList";
@@ -22,7 +24,35 @@ import Dictionary from "./Dictionary";
 import Translator from "./Translator";
 import ScanCode from "./ScanCode";
 
+// inner features
+import PendingOrders from "./PendingOrders";
+import Inventory from "./Inventory";
+import PendingApprovals from "./PendingApprovals";
+import SellToStore from "./SellToStore";
+
 function App() {
+  // State to track items sent by vendors and approved items
+  const [pendingItems, setPendingItems] = useState([]);
+  const [inventoryItems, setInventoryItems] = useState([]);
+
+  // Add item from vendor to pending list
+  const addPendingItem = (item) => {
+    setPendingItems(prev => [...prev, { id: Date.now(), ...item }]);
+  };
+
+  // Approve: remove from pending, add to inventory
+  const approveItem = (itemId) => {
+    const itemToApprove = pendingItems.find(item => item.id === itemId);
+    if (!itemToApprove) return;
+    setPendingItems(prev => prev.filter(item => item.id !== itemId));
+    setInventoryItems(prev => [...prev, itemToApprove]);
+  };
+
+  // Decline: remove from pending only
+  const declineItem = (itemId) => {
+    setPendingItems(prev => prev.filter(item => item.id !== itemId));
+  };
+
   return (
     <Router basename="/p4">
       <Routes>
@@ -42,6 +72,32 @@ function App() {
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/user" element={<User />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/staff" element={<Staff />} />
+          <Route path="/vendor" element={<Vendor />} />
+
+          {/* pages connected to store logic */}
+          <Route
+            path="/pendingOrders"
+            element={<PendingOrders />}
+          />
+          <Route
+            path="/inventory"
+            element={<Inventory inventoryItems={inventoryItems} />}
+          />
+          <Route
+            path="/pendingApprovals"
+            element={
+              <PendingApprovals
+                pendingItems={pendingItems}
+                approveItem={approveItem}
+                declineItem={declineItem}
+              />
+            }
+          />
+          <Route
+            path="/sellToStore"
+            element={<SellToStore addPendingItem={addPendingItem} />}
+          />
         </Route>
       </Routes>
     </Router>

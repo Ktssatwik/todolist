@@ -45,13 +45,21 @@ const Welcome = () => {
       </nav>
       <main className="welcome-main">
         <div className="abstract-shape"></div>
-        <h1 className="main-heading">Welcome to DailyBox</h1>
-        <p className="main-tagline">Your daily apps & tools — beautifully packed in one place.</p>
-        <p className="main-slogan">✨ Simplify, Organize, Achieve ✨</p>
+        <h1 className="main-heading">WELCOME TO A-Z STORE</h1>
+        <p className="main-tagline">Everything you need — beautifully brought together</p>
+        <p className="main-slogan">✨ From Essentials to Extras. ✨</p>
         <div className="card-container">
           <div className="welcome-card" onClick={() => setAskAdminPassword(true)}>
             <h2>Admin</h2>
             <p>Manage products, track orders, and keep the store updated effortlessly.</p>
+          </div>
+          <div className="welcome-card" onClick={() => navigate("/staff")}>
+            <h2>Staff</h2>
+            <p>Select which products to be added into the cart.</p>
+          </div>
+          <div className="welcome-card" onClick={() => navigate("/vendor")}>
+            <h2>Vendor</h2>
+            <p>Sell products to the store.</p>
           </div>
           <div className="welcome-card" onClick={() => navigate("/user")}>
             <h2>User</h2>

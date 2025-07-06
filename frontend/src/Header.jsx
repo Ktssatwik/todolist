@@ -41,7 +41,7 @@ function Header() {
     <nav className="navbar">
       <div
         className="navbar-brand"
-        onClick={() => navigate("/innerHome")}
+        onClick={() => navigate("/welcome")}
         style={{ cursor: "pointer" }}
       >
         🌱 TaskHub+
