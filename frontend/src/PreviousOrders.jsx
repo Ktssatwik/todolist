@@ -1,14 +1,28 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-
-const PreviousOrders = () =>
-{
-    const navigate = useNavigate();
-
-    return (
+const PreviousOrders = ({ previousOrders }) => {
+  return (
+    <div>
+      <h1>PREVIOUS ORDERS</h1>
+      {previousOrders.length === 0 ? (
+        <p>NO PREVIOUS ORDERS</p>
+      ) : (
         <div>
-            <h1>previous orders</h1>
+          <h2>All Previous Orders:</h2>
+          {previousOrders.map((order, index) => (
+            <div key={index}>
+              <h3>Order #{index + 1}</h3>
+              <ul>
+                {order.map((item) => (
+                  <li key={item.id}>
+                    <strong>{item.name}</strong> — Type: {item.type}, Price:{" "}
+                    {item.price}, Quantity: {item.quantity}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-    )
-}
-export default PreviousOrders; 
+      )}
+    </div>
+  );
+};
+export default PreviousOrders;

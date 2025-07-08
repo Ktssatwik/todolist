@@ -37,6 +37,8 @@ function App() {
   // State to track items sent by vendors and approved items
   const [pendingItems, setPendingItems] = useState([]);
   const [inventoryItems, setInventoryItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]); 
+  const [previousOrders, setPreviousOrders] = useState([]); 
   
   // NEW: role to decide which buttons to show in Inventory
   const [role, setRole] = useState("user"); // "user" or "staff"
@@ -63,7 +65,9 @@ function App() {
   const addToCart = (itemId) => {
     console.log(`Add item ${itemId} to cart`);
     alert (`Item ${itemId} added to cart!`);
-    // add your add-to-cart logic here
+    const itemToAdd = inventoryItems.find(item => item.id === itemId);
+    setCartItems(prev => [...prev, itemToAdd]);
+
   };
 
   const deleteItem = (itemId) => {
@@ -96,8 +100,15 @@ function App() {
           
           <Route path="/admin" element={<Admin />} />
           <Route path="/vendor" element={<Vendor />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/previousOrders" element={<PreviousOrders />} />
+          <Route path="/cart" element={<Cart
+            cartItems={cartItems} 
+            setCartItems={setCartItems}
+            setPreviousOrders={setPreviousOrders}
+          />} />
+          <Route path="/previousOrders" element={<PreviousOrders
+            previousOrders={previousOrders}
+            setPreviousOrders={setPreviousOrders}
+          />} />
 
           {/* pages connected to store logic */}
           <Route
