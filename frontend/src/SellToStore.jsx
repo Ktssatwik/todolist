@@ -2,24 +2,26 @@ import React, { useState } from "react";
 
 const SellToStore = ({ addPendingItem }) => {
   const [name, setName] = useState("");
-  const [type, setType] = useState("");  // initially empty for "Select type"
-  const [price, setPrice] = useState("");    // required field now
-  const [description, setDescription] = useState("");  // optional
+  const [type, setType] = useState("");  
+  const [price, setPrice] = useState(""); 
+  const [quantity, setQuantity] = useState(1); 
+  const [description, setDescription] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !type || !price) {
+    if (!name || !type || !price || !quantity) {
       alert("Please fill all required fields.");
       return;
     }
 
     // add item to pending list
-    addPendingItem({ name, type, price, description });
+    addPendingItem({ name, type, price,quantity, description });
 
     // clear form
     setName("");
     setType("");
     setPrice("");
+    setQuantity(1); 
     setDescription("");
 
     alert("Item sent for approval!");
@@ -63,6 +65,18 @@ const SellToStore = ({ addPendingItem }) => {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             placeholder="Enter price"
+            required
+          />
+        </div>
+
+        <div>
+          <label>Quantity</label>
+          <input 
+            type="number" 
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            placeholder="Enter quantity"
+            min="1"
             required
           />
         </div>

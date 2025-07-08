@@ -10,7 +10,7 @@ const PendingApprovals = ({ pendingItems, approveItem, declineItem }) => {
         <ul>
           {pendingItems.map(item => (
             <li key={item.id}>
-              <strong>{item.name}</strong> — Type: {item.type}, Price: {item.price}
+              <strong>{item.name}</strong> — Type: {item.type}, Price: {item.price}, Quantity: {item.quantity},
               {item.description && <div>Description: {item.description}</div>}
               <div>
                 <button onClick={() => approveItem(item.id)}>✅ Accept</button>

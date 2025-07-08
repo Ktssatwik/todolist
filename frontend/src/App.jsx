@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -29,11 +30,16 @@ import PendingOrders from "./PendingOrders";
 import Inventory from "./Inventory";
 import PendingApprovals from "./PendingApprovals";
 import SellToStore from "./SellToStore";
+import Cart from "./Cart";
+import PreviousOrders from "./PreviousOrders";
 
 function App() {
   // State to track items sent by vendors and approved items
   const [pendingItems, setPendingItems] = useState([]);
   const [inventoryItems, setInventoryItems] = useState([]);
+  
+  // NEW: role to decide which buttons to show in Inventory
+  const [role, setRole] = useState("user"); // "user" or "staff"
 
   // Add item from vendor to pending list
   const addPendingItem = (item) => {
@@ -53,6 +59,19 @@ function App() {
     setPendingItems(prev => prev.filter(item => item.id !== itemId));
   };
 
+  // NEW: actions for Inventory
+  const addToCart = (itemId) => {
+    console.log(`Add item ${itemId} to cart`);
+    alert (`Item ${itemId} added to cart!`);
+    // add your add-to-cart logic here
+  };
+
+  const deleteItem = (itemId) => {
+    console.log(`Delete item ${itemId}`);
+    alert(`Item ${itemId} deleted from inventory!`);
+    setInventoryItems(prev => prev.filter(item => item.id !== itemId));
+  };
+
   return (
     <Router basename="/p4">
       <Routes>
@@ -70,10 +89,15 @@ function App() {
           <Route path="/translator" element={<Translator />} />
           <Route path="/scanCode" element={<ScanCode />} />
           <Route path="/welcome" element={<Welcome />} />
-          <Route path="/user" element={<User />} />
+          
+          {/* Pass setRole so User and Staff can set role before going to /inventory */}
+          <Route path="/user" element={<User setRole={setRole} />} />
+          <Route path="/staff" element={<Staff setRole={setRole} />} />
+          
           <Route path="/admin" element={<Admin />} />
-          <Route path="/staff" element={<Staff />} />
           <Route path="/vendor" element={<Vendor />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/previousOrders" element={<PreviousOrders />} />
 
           {/* pages connected to store logic */}
           <Route
@@ -82,7 +106,14 @@ function App() {
           />
           <Route
             path="/inventory"
-            element={<Inventory inventoryItems={inventoryItems} />}
+            element={
+              <Inventory
+                inventoryItems={inventoryItems}
+                role={role}
+                onAddToCart={addToCart}
+                onDeleteItem={deleteItem}
+              />
+            }
           />
           <Route
             path="/pendingApprovals"
