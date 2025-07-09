@@ -90,18 +90,26 @@ function Header() {
               <div className="logout-buttons">
                 <button
                   className="logout-confirm-button"
+                  onClick={async () => {
+                    try {
+                      await fetch("http://localhost:8000/api/auth/logout", {
+                        method: "POST",
+                        credentials: "include", // must include to send cookies
+                      });
+                      setLogout(false);
+                      setShowDropdown(false);
+                      navigate("/login");
+                    } catch (err) {
+                      console.error("Logout error:", err);
+                    }
+                  }}
+                >
+                  YES
+                </button>
+
+                <button
+                  className="logout-cancel-button"
                   onClick={() => {
-                    // alert("You have been logged out successfully!");
-                    setLogout(false);
-                    setShowDropdown(false);
-                    navigate("/login");
-                    }}
-                  >
-                    YES
-                  </button>
-                  <button
-                    className="logout-cancel-button"
-                    onClick={() => {
                     setLogout(false);
                     setShowDropdown(false);
                   }}

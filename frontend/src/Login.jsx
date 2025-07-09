@@ -8,7 +8,7 @@ function Login() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
 
@@ -17,14 +17,29 @@ function Login() {
       return;
     }
 
-    // ✅ Frontend only: directly navigate to innerHome
-    if( username === "ktssatwik" && password === "bablu1103") {
-      setErrorMessage("");
-      navigate("/welcome");
+    try {
+      const response = await fetch("http://localhost:8000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // include cookies for session management
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setErrorMessage("");
+        // optionally store user info or token here
+        navigate("/welcome");  // or your post-login page
+      } else {
+        setErrorMessage(data.message || "❌ Login failed. Try again.");
+      }
+    } catch (error) {
+      setErrorMessage("❌ Server error. Please try later.");
+      console.error("Login error:", error);
     }
-    else {
-      setErrorMessage("❌ Invalid username or password. Please try again.");
-    } 
   };
 
   const goToRegister = () => {
@@ -59,7 +74,7 @@ function Login() {
               placeholder="Enter your password"
             />
             <span onClick={togglePassword} className="toggle-password">
-              {passwordVisible ? <FaEyeSlash ash /> : <FaEye />}
+              {passwordVisible ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
         </div>
@@ -82,18 +97,3 @@ function Login() {
 }
 
 export default Login;
-
-
-// <div className="x">
-//   <>FaGoogle</>
-//   <p>google</p>
-// </div>
-
-// // in css 
-
-// .x{
-//   display : flex;
-//   flex-direction: row;
-//   align-items: center;
-//   justify-content: center;
-// }

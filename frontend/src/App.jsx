@@ -1,4 +1,4 @@
-// App.js
+// App.jsx
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -34,59 +34,57 @@ import Cart from "./Cart";
 import PreviousOrders from "./PreviousOrders";
 import SoldItems from "./SoldItems";
 
+// NEW
+import ProtectedRoute from "./components/ProtectedRoute";
+import GuestRoute from "./components/GuestRoute";
+
 function App() {
-  // State to track items sent by vendors and approved items
   const [pendingItems, setPendingItems] = useState([]);
   const [inventoryItems, setInventoryItems] = useState([]);
-  const [cartItems, setCartItems] = useState([]); 
-  const [previousOrders, setPreviousOrders] = useState([]); 
-  const [soldItems, setSoldItems] = useState([]); 
-  
-  // NEW: role to decide which buttons to show in Inventory
-  const [role, setRole] = useState("user"); // "user" or "staff"
+  const [cartItems, setCartItems] = useState([]);
+  const [previousOrders, setPreviousOrders] = useState([]);
+  const [soldItems, setSoldItems] = useState([]);
+  const [role, setRole] = useState("user");
 
-  // Add item from vendor to pending list
   const addPendingItem = (item) => {
-    setPendingItems(prev => [...prev, { id: Date.now(), ...item }]);
+    setPendingItems((prev) => [...prev, { id: Date.now(), ...item }]);
   };
-
-  // Approve: remove from pending, add to inventory
   const approveItem = (itemId) => {
-    const itemToApprove = pendingItems.find(item => item.id === itemId);
-    if (!itemToApprove) return;
-    setPendingItems(prev => prev.filter(item => item.id !== itemId));
-    setInventoryItems(prev => [...prev, itemToApprove]);
-    setSoldItems(prev => [...prev, itemToApprove]); // Add to sold items as well
+    const item = pendingItems.find((i) => i.id === itemId);
+    if (!item) return;
+    setPendingItems((prev) => prev.filter((i) => i.id !== itemId));
+    setInventoryItems((prev) => [...prev, item]);
+    setSoldItems((prev) => [...prev, item]);
   };
-
-  // Decline: remove from pending only
   const declineItem = (itemId) => {
-    setPendingItems(prev => prev.filter(item => item.id !== itemId));
+    setPendingItems((prev) => prev.filter((i) => i.id !== itemId));
   };
-
-  // NEW: actions for Inventory
   const addToCart = (itemId) => {
-    console.log(`Add item ${itemId} to cart`);
-    alert (`Item ${itemId} added to cart!`);
-    const itemToAdd = inventoryItems.find(item => item.id === itemId);
-    setCartItems(prev => [...prev, itemToAdd]);
-
+    const item = inventoryItems.find((i) => i.id === itemId);
+    if (item) setCartItems((prev) => [...prev, item]);
   };
-
   const deleteItem = (itemId) => {
-    console.log(`Delete item ${itemId}`);
-    alert(`Item ${itemId} deleted from inventory!`);
-    setInventoryItems(prev => prev.filter(item => item.id !== itemId));
+    setInventoryItems((prev) => prev.filter((i) => i.id !== itemId));
   };
 
   return (
     <Router basename="/p4">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        {/* Public routes */}
+        <Route path="/" element={<GuestRoute><Home /></GuestRoute>} />
+<Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
+<Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
 
-        <Route element={<Layout />}>
+
+        {/* Protected routes */}
+        <Route
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="/welcome" element={<Welcome />} />
           <Route path="/innerHome" element={<InnerHome />} />
           <Route path="/toDoList" element={<ToDoList />} />
           <Route path="/calculator" element={<Calculator />} />
@@ -95,29 +93,30 @@ function App() {
           <Route path="/dictionary" element={<Dictionary />} />
           <Route path="/translator" element={<Translator />} />
           <Route path="/scanCode" element={<ScanCode />} />
-          <Route path="/welcome" element={<Welcome />} />
-          
-          {/* Pass setRole so User and Staff can set role before going to /inventory */}
           <Route path="/user" element={<User setRole={setRole} />} />
           <Route path="/staff" element={<Staff setRole={setRole} />} />
-          
           <Route path="/admin" element={<Admin />} />
           <Route path="/vendor" element={<Vendor />} />
-          <Route path="/cart" element={<Cart
-            cartItems={cartItems} 
-            setCartItems={setCartItems}
-            setPreviousOrders={setPreviousOrders}
-          />} />
-          <Route path="/previousOrders" element={<PreviousOrders
-            previousOrders={previousOrders}
-            setPreviousOrders={setPreviousOrders}
-          />} />
-
-          {/* pages connected to store logic */}
           <Route
-            path="/pendingOrders"
-            element={<PendingOrders />}
+            path="/cart"
+            element={
+              <Cart
+                cartItems={cartItems}
+                setCartItems={setCartItems}
+                setPreviousOrders={setPreviousOrders}
+              />
+            }
           />
+          <Route
+            path="/previousOrders"
+            element={
+              <PreviousOrders
+                previousOrders={previousOrders}
+                setPreviousOrders={setPreviousOrders}
+              />
+            }
+          />
+          <Route path="/pendingOrders" element={<PendingOrders />} />
           <Route
             path="/inventory"
             element={
@@ -143,11 +142,16 @@ function App() {
             path="/sellToStore"
             element={<SellToStore addPendingItem={addPendingItem} />}
           />
+          <Route
+            path="/soldItems"
+            element={
+              <SoldItems
+                soldItems={soldItems}
+                setSoldItems={setSoldItems}
+              />
+            }
+          />
         </Route>
-        <Route path="/soldItems" element={<SoldItems 
-          soldItems={soldItems} 
-          setSoldItems={setSoldItems}
-        />} />
       </Routes>
     </Router>
   );

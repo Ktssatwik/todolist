@@ -192,3 +192,16 @@ body, html {
 .github:hover {
   background-color: #242424;
 }
+
+/* Style for role select to match inputs */
+.role-select {
+  width: 100%;
+  padding: 12px 40px; /* align with icons */
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  outline: none;
+  appearance: none;
+  background: white url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23009688' class='bi bi-chevron-down' viewBox='0 0 16 16'> <path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/> </svg>") no-repeat right 12px center/16px 16px;
+}

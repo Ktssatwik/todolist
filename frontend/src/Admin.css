@@ -1,0 +1,69 @@
+/* Admin.css */
+
+.admin-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.admin-title {
+  text-align: center;
+  color: #009688;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.admin-description {
+  text-align: center;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.user-card {
+  background: #f9f9f9;
+  border-left: 4px solid #009688;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.user-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.user-info p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+}
+
+.action-buttons {
+  margin-top: 8px;
+}
+
+.action-buttons button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.action-buttons button:hover {
+  transform: translateY(-2px);
+}
+
+.approve-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.reject-btn {
+  background-color: #f44336;
+  color: white;
+}
