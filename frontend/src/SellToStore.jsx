@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SellToStore.css"; // add this line
 
 const SellToStore = ({ addPendingItem }) => {
   const [name, setName] = useState("");
@@ -13,42 +14,26 @@ const SellToStore = ({ addPendingItem }) => {
       alert("Please fill all required fields.");
       return;
     }
-
-    // add item to pending list
-    addPendingItem({ name, type, price,quantity, description });
-
-    // clear form
-    setName("");
-    setType("");
-    setPrice("");
-    setQuantity(1); 
-    setDescription("");
-
+    addPendingItem({ name, type, price, quantity, description });
+    setName(""); setType(""); setPrice(""); setQuantity(1); setDescription("");
     alert("Item sent for approval!");
   };
 
   return (
-    <div>
-      <h1>Sell Item to Store</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="sell-container">
+      <h1 className="sell-heading">Sell Item to Store</h1>
+      <form className="sell-form" onSubmit={handleSubmit}>
+        <div className="form-group">
           <label>Item Name:</label>
           <input 
-            type="text" 
-            value={name}
+            type="text" value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Enter item name"
-            required
+            placeholder="Enter item name" required
           />
         </div>
-
-        <div>
+        <div className="form-group">
           <label>Item Type:</label>
-          <select 
-            value={type} 
-            onChange={(e) => setType(e.target.value)} 
-            required
-          >
+          <select value={type} onChange={(e) => setType(e.target.value)} required>
             <option value="" disabled>Select type</option>
             <option value="Food">Food</option>
             <option value="Electronics">Electronics</option>
@@ -57,31 +42,23 @@ const SellToStore = ({ addPendingItem }) => {
             <option value="Day to Day Essentials">Day to Day Essentials</option>
           </select>
         </div>
-
-        <div>
+        <div className="form-group">
           <label>Price:</label>
           <input 
-            type="number" 
-            value={price}
+            type="number" value={price}
             onChange={(e) => setPrice(e.target.value)}
-            placeholder="Enter price"
-            required
+            placeholder="Enter price" required
           />
         </div>
-
-        <div>
-          <label>Quantity</label>
+        <div className="form-group">
+          <label>Quantity:</label>
           <input 
-            type="number" 
-            value={quantity}
+            type="number" value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
-            placeholder="Enter quantity"
-            min="1"
-            required
+            placeholder="Enter quantity" min="1" required
           />
         </div>
-
-        <div>
+        <div className="form-group">
           <label>Description (optional):</label>
           <textarea 
             value={description}
@@ -89,8 +66,7 @@ const SellToStore = ({ addPendingItem }) => {
             placeholder="Enter description"
           />
         </div>
-
-        <button type="submit">Submit Item for Approval</button>
+        <button className="submit-btn" type="submit">Submit Item for Approval</button>
       </form>
     </div>
   );

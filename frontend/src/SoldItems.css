@@ -1,0 +1,75 @@
+/* SoldItems.css */
+
+.sold-container {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #121212, #2a2a2a, #3b3b3b); /* dark metallic bg */
+  min-height: 100vh;
+  color: #f5f5f5;
+}
+
+.sold-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #dcdcdc, #a8a8a8); /* silver gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sold-empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #cccccc; /* light silver */
+}
+
+.sold-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+
+.sold-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  padding: 25px 20px;
+  width: 260px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sold-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(180, 180, 180, 0.4); /* silver glow */
+}
+
+.sold-item-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #dcdcdc; /* silver text */
+}
+
+.sold-info {
+  font-size: 0.95rem;
+  color: #bfbfbf; /* soft silver */
+  margin-bottom: 6px;
+}
+
+.sold-description {
+  font-size: 0.9rem;
+  color: #aaaaaa; /* muted silver */
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sold-card {
+    width: 90%;
+  }
+}

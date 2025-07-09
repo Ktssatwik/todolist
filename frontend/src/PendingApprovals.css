@@ -1,0 +1,110 @@
+/* Container and heading */
+.approvals-container {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0d1b26, #1c3547, #2a4e6a);
+  min-height: 100vh;
+  color: #f5f5f5;
+}
+
+.approvals-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #3ccf91, #00c2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Empty text */
+.approvals-empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #b8e2dc;
+}
+
+/* List layout */
+.approvals-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+/* Card style */
+.approvals-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  padding: 25px 20px;
+  width: 260px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.approvals-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 194, 255, 0.4);
+}
+
+/* Item text */
+.item-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #3ccf91;
+}
+
+.item-info, .item-description {
+  font-size: 0.95rem;
+  color: #b8e2dc;
+  margin-bottom: 6px;
+}
+
+/* Buttons */
+.approvals-buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.approvals-btn {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* Accept: mint */
+.accept-btn {
+  background: #3ccf91;
+}
+
+.accept-btn:hover {
+  background: #00c2ff;
+  transform: scale(1.05);
+}
+
+/* Decline: coral */
+.decline-btn {
+  background: #e74c3c;
+}
+
+.decline-btn:hover {
+  background: #ff5e4d;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .approvals-card {
+    width: 90%;
+  }
+}

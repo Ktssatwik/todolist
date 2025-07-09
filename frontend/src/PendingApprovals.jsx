@@ -1,20 +1,32 @@
 import React from "react";
+import "./PendingApprovals.css";
 
 const PendingApprovals = ({ pendingItems, approveItem, declineItem }) => {
   return (
-    <div>
-      <h1>Pending Approvals</h1>
+    <div className="approvals-container">
+      <h1 className="approvals-heading">Pending Approvals</h1>
       {pendingItems.length === 0 ? (
-        <p>No items waiting for approval.</p>
+        <p className="approvals-empty">No items waiting for approval.</p>
       ) : (
-        <ul>
+        <ul className="approvals-list">
           {pendingItems.map(item => (
-            <li key={item.id}>
-              <strong>{item.name}</strong> — Type: {item.type}, Price: {item.price}, Quantity: {item.quantity},
-              {item.description && <div>Description: {item.description}</div>}
-              <div>
-                <button onClick={() => approveItem(item.id)}>✅ Accept</button>
-                <button onClick={() => declineItem(item.id)}>❌ Decline</button>
+            <li key={item.id} className="approvals-card">
+              <strong className="item-name">{item.name}</strong>
+              <div className="item-info">
+                Type: {item.type} <br />
+                Price: {item.price} Rs. <br />
+                Quantity: {item.quantity}
+              </div>
+              {item.description && (
+                <div className="item-description">Description: {item.description}</div>
+              )}
+              <div className="approvals-buttons">
+                <button className="approvals-btn accept-btn" onClick={() => approveItem(item.id)}>
+                  ✅ Accept
+                </button>
+                <button className="approvals-btn decline-btn" onClick={() => declineItem(item.id)}>
+                  ❌ Decline
+                </button>
               </div>
             </li>
           ))}

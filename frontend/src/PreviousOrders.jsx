@@ -1,20 +1,26 @@
+import React from "react";
+import "./PreviousOrders.css";
+
 const PreviousOrders = ({ previousOrders }) => {
   return (
-    <div>
-      <h1>PREVIOUS ORDERS</h1>
+    <div className="orders-container">
+      <h1 className="orders-heading">Previous Orders</h1>
       {previousOrders.length === 0 ? (
-        <p>NO PREVIOUS ORDERS</p>
+        <p className="orders-empty">No previous orders.</p>
       ) : (
-        <div>
-          <h2>All Previous Orders:</h2>
+        <div className="orders-list">
           {previousOrders.map((order, index) => (
-            <div key={index}>
-              <h3>Order #{index + 1}</h3>
-              <ul>
+            <div key={index} className="order-card">
+              <h3 className="order-title">Order #{index + 1}</h3>
+              <ul className="order-items">
                 {order.map((item) => (
-                  <li key={item.id}>
-                    <strong>{item.name}</strong> — Type: {item.type}, Price:{" "}
-                    {item.price}, Quantity: {item.quantity}
+                  <li key={item.id} className="order-item">
+                    <strong className="item-name">{item.name}</strong>
+                    <div className="item-info">
+                      Type: {item.type}<br />
+                      Price: {item.price} Rs.<br />
+                      Quantity: {item.quantity}
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -25,4 +31,5 @@ const PreviousOrders = ({ previousOrders }) => {
     </div>
   );
 };
+
 export default PreviousOrders;

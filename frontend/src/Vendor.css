@@ -1,0 +1,68 @@
+/* Vendor.css */
+
+.vendor-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #1e1e1e, #3a3a3a, #5c5c5c); /* sleek dark silver bg */
+  min-height: 100vh;
+}
+
+/* Card with glassmorphism & silver glow */
+.vendor-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  padding: 40px 25px;
+  width: 280px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.vendor-card:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(192, 192, 192, 0.4); /* silver glow */
+  border-color: rgba(192, 192, 192, 0.3);
+}
+
+/* Gradient title in silver tones */
+.vendor-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #dcdcdc, #c0c0c0); /* light to classic silver */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Description text */
+.vendor-description {
+  font-size: 15px;
+  color: #cccccc;
+  line-height: 1.4;
+}
+
+/* Icon */
+.vendor-icon {
+  font-size: 2rem;
+  color: #c0c0c0;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.vendor-card:hover .vendor-icon {
+  color: #dcdcdc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .vendor-card {
+    width: 90%;
+  }
+}

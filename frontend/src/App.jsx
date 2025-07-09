@@ -32,6 +32,7 @@ import PendingApprovals from "./PendingApprovals";
 import SellToStore from "./SellToStore";
 import Cart from "./Cart";
 import PreviousOrders from "./PreviousOrders";
+import SoldItems from "./SoldItems";
 
 function App() {
   // State to track items sent by vendors and approved items
@@ -39,6 +40,7 @@ function App() {
   const [inventoryItems, setInventoryItems] = useState([]);
   const [cartItems, setCartItems] = useState([]); 
   const [previousOrders, setPreviousOrders] = useState([]); 
+  const [soldItems, setSoldItems] = useState([]); 
   
   // NEW: role to decide which buttons to show in Inventory
   const [role, setRole] = useState("user"); // "user" or "staff"
@@ -54,6 +56,7 @@ function App() {
     if (!itemToApprove) return;
     setPendingItems(prev => prev.filter(item => item.id !== itemId));
     setInventoryItems(prev => [...prev, itemToApprove]);
+    setSoldItems(prev => [...prev, itemToApprove]); // Add to sold items as well
   };
 
   // Decline: remove from pending only
@@ -141,6 +144,10 @@ function App() {
             element={<SellToStore addPendingItem={addPendingItem} />}
           />
         </Route>
+        <Route path="/soldItems" element={<SoldItems 
+          soldItems={soldItems} 
+          setSoldItems={setSoldItems}
+        />} />
       </Routes>
     </Router>
   );

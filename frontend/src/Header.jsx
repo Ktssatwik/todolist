@@ -44,7 +44,7 @@ function Header() {
         onClick={() => navigate("/welcome")}
         style={{ cursor: "pointer" }}
       >
-        🌱 TaskHub+
+        🛒 A-Z STORE
       </div>
       <div
         className="settings"

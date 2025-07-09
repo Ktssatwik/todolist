@@ -1,0 +1,68 @@
+/* Staff.css */
+
+.staff-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #1a1a1a, #2b2b2b, #3a3a3a); /* dark elegant bg */
+  min-height: 100vh;
+}
+
+/* Card with glass effect & gold glow */
+.staff-card {
+  background: rgba(255, 215, 0, 0.05); /* very subtle gold tint */
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  padding: 40px 25px;
+  width: 280px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.staff-card:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(255, 215, 0, 0.4); /* golden glow */
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+/* Icon style */
+.staff-icon {
+  font-size: 2rem;
+  color: #ffd700; /* gold */
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.staff-card:hover .staff-icon {
+  color: #ffec8b; /* lighter gold on hover */
+}
+
+/* Gradient title */
+.staff-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #ffd700, #ffec8b); /* gold gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Description text */
+.staff-description {
+  font-size: 15px;
+  color: #d4af37; /* softer gold text */
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .staff-card {
+    width: 90%;
+  }
+}

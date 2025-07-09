@@ -1,35 +1,37 @@
 // Staff.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Staff.css";
+import { FaClipboardList, FaBoxes, FaCheckCircle } from "react-icons/fa";
 
 const Staff = ({ setRole }) => {
   const navigate = useNavigate();
 
   return (
-    <div style={{ display: "flex", gap: "10px" }}>
-      <div
-        style={{ border: "1px solid black" }}
-        onClick={() => navigate("/pendingOrders")}
-      >
-        <h2>PENDING ORDERS</h2>
-        <p>CLICK HERE TO ACCEPT PENDING ORDERS</p>
+    <div className="staff-container">
+      <div className="staff-card" onClick={() => navigate("/pendingOrders")}>
+        <FaClipboardList className="staff-icon" />
+        <h2 className="staff-title">Pending Orders</h2>
+        <p className="staff-description">Click here to accept pending orders</p>
       </div>
       <div
-        style={{ border: "1px solid black" }}
+        className="staff-card"
         onClick={() => {
           setRole("staff");
           navigate("/inventory");
         }}
       >
-        <h2>CHANGE INVENTORY</h2>
-        <p>CLICK HERE TO ADD OR REMOVE ITEMS</p>
+        <FaBoxes className="staff-icon" />
+        <h2 className="staff-title">Change Inventory</h2>
+        <p className="staff-description">Click here to add or remove items</p>
       </div>
       <div
-        style={{ border: "1px solid black" }}
+        className="staff-card"
         onClick={() => navigate("/pendingApprovals")}
       >
-        <h2>PENDING APPROVALS</h2>
-        <p>CLICK HERE TO APPROVE ITEMS FROM VENDORS</p>
+        <FaCheckCircle className="staff-icon" />
+        <h2 className="staff-title">Pending Approvals</h2>
+        <p className="staff-description">Click here to approve items from vendors</p>
       </div>
     </div>
   );

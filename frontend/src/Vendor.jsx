@@ -1,16 +1,26 @@
+// Vendor.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Vendor.css";
+import { FaStore, FaHistory } from "react-icons/fa";
 
 const Vendor = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
-    <div
-      style={{ border: "1px solid black" }}
-      onClick={() => navigate("/sellToStore")}
-    >
-      <h1>SELL ITEMS</h1>
-      <p>CLick here to sell items to the store</p>
+    <div className="vendor-container">
+      <div className="vendor-card" onClick={() => navigate("/sellToStore")}>
+        <FaStore className="vendor-icon" />
+        <h2 className="vendor-title">Sell Items</h2>
+        <p className="vendor-description">Click here to sell items to the store</p>
+      </div>
+      <div className="vendor-card" onClick={() => navigate("/soldItems")}>
+        <FaHistory className="vendor-icon" />
+        <h2 className="vendor-title">Sold Items History</h2>
+        <p className="vendor-description">Click here to see sold items history</p>
+      </div>
     </div>
   );
 };
+
 export default Vendor;

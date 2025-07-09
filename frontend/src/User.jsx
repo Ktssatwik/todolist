@@ -1,29 +1,34 @@
 // User.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./User.css";
+import { FaShoppingCart, FaBoxOpen, FaHistory } from "react-icons/fa";
 
 const User = ({ setRole }) => {
   const navigate = useNavigate();
 
   return (
-    <div style={{ display: "flex", gap: "10px" }}>
+    <div className="user-container">
       <div
-        style={{ border: "1px solid black" }}
+        className="user-card"
         onClick={() => {
           setRole("user");
           navigate("/inventory");
         }}
       >
-        <h2>BUY ITEMS</h2>
-        <p>CLICK HERE TO GO TO INVENTORY</p>
+        <FaBoxOpen className="user-icon" />
+        <h2 className="user-title">Buy Items</h2>
+        <p className="user-description">Click here to go to inventory</p>
       </div>
-      <div style={{ border: "1px solid black" }} onClick={() => navigate("/cart")}>
-        <h2>VIEW CART</h2>
-        <p>CLICK HERE TO VIEW CART </p>
+      <div className="user-card" onClick={() => navigate("/cart")}>
+        <FaShoppingCart className="user-icon" />
+        <h2 className="user-title">View Cart</h2>
+        <p className="user-description">Click here to view your cart</p>
       </div>
-      <div style={{ border: "1px solid black" }} onClick={() => navigate("/previousOrders")}>
-        <h2>PREVIOUS ORDERS</h2>
-        <p>CLICK HERE TO VIEW PREVIOUS ORDERS</p>
+      <div className="user-card" onClick={() => navigate("/previousOrders")}>
+        <FaHistory className="user-icon" />
+        <h2 className="user-title">Previous Orders</h2>
+        <p className="user-description">Click here to view previous orders</p>
       </div>
     </div>
   );

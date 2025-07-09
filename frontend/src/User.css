@@ -1,0 +1,70 @@
+/* User.css */
+
+.user-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0b1622, #142738, #1e3a52);
+  min-height: 100vh;
+}
+
+/* Card style with glass effect & minty glow */
+.user-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  padding: 40px 25px;
+  width: 280px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(0, 194, 255, 0.4);
+  border-color: rgba(0, 194, 255, 0.3);
+}
+
+/* Icon style */
+.user-icon {
+  font-size: 2.5rem;
+  color: #3ccf91 !important;
+  margin-bottom: 10px;
+  display: inline-block;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.user-card:hover .user-icon {
+  color: #00c2ff !important;
+  text-shadow: 0 0 8px rgba(0, 194, 255, 0.6);
+}
+
+/* Gradient title */
+.user-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #3ccf91, #00c2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Description text */
+.user-description {
+  font-size: 15px;
+  color: #b8e2dc;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-card {
+    width: 90%;
+  }
+}
